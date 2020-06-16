@@ -3,8 +3,8 @@ library(ggplot2)
 library(scales)
 
 # Import shop daily account and monthly ssumary details
-path<- "Shop's Account statement.xlsx"
-path_2 <- "account summary.xlsx"
+path<- "input_data/Shop's Account statement.xlsx"
+path_2 <- "input_data/account summary.xlsx"
 
 daily_accounts <- readxl::read_xlsx(path)
 glimpse(daily_accounts)
@@ -64,4 +64,4 @@ ggplot() +
           legend.direction = "horizontal",
           plot.title = element_text(hjust = 0.5))
 
-ggsave("Sale and expenditure trend from 2018-2020.jpg", dpi = 300, width = 25, height = 15, units = 'cm')
+ggsave("output_files/Sale and expenditure trend from 2018-2020.jpg", dpi = 300, width = 25, height = 15, units = 'cm')
