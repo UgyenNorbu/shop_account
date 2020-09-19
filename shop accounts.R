@@ -12,14 +12,15 @@ glimpse(daily_accounts)
 # Convert "Buy" to numeric type and replace empty entries with 0 indicating no transaction
 
 daily_accounts <- daily_accounts %>% 
-    mutate(Buy = as.numeric(Buy)) %>% 
+    mutate(Buy = as.numeric(Buy)) %>%
+    mutate(Sale = as.numeric(Sale)) %>% 
     mutate(Sale = ifelse(is.na(Sale), 0, Sale)) %>% 
     mutate(Buy = ifelse(is.na(Buy), 0, Buy))
 
 glimpse( daily_accounts)
 
 # Functon to calculate number of rows without entry (the number 2 implies column, 
-# and the function will be aplied on it)
+# and the function will be applied on it)
 
 na_sum <- function(col_name) {
     sum(is.na(col_name))
@@ -57,7 +58,7 @@ ggplot() +
          y = "Amount in Nu. ", 
          title = "Sale and expenditure trends from 2018-2020"
         ) +
-    scale_x_datetime(date_breaks = "1 month", labels = date_format("%b %Y")) +
+    scale_x_datetime(date_breaks = "3 month", labels = date_format("%b %Y")) +
         theme_minimal() +
     theme(axis.text.x = element_text(angle=15),
           legend.position = c(0.5, 1),
